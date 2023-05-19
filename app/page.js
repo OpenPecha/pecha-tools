@@ -21,7 +21,7 @@ export default function Home() {
       .then((data) => {
         setUsernames(data.data);
       });
-    fetch("http://localhost:3000/api/workSpaces")
+    fetch("http://localhost:3000/api/workspaces")
       .then((res) => res.json())
       .then((data) => {
         setWorkSpaces(data.data);

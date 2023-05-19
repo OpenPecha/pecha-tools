@@ -3,12 +3,14 @@ export default function Histories({ histories }) {
     <>
       {histories.length > 0 ? (
         <div className="flex flex-col space-y-2">
-          <h1 className="text-2xl">Histories</h1>
+          <h1 className="text-2xl text-center">Histories</h1>
+          <ul className="h-[82vh] overflow-y-auto">
           {histories.map((history) => (
-            <div key={history.id} className="flex flex-col space-y-2">
-              <h1 className="text-xl">{history.data}</h1>
-            </div>
+            <li key={history.id} className="whitespace-nowrap">
+              {history.data}
+            </li>
           ))}
+          </ul>
         </div>
       ) : (
         <div className="flex flex-col space-y-2">
