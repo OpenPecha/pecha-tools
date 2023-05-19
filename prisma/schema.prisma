@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model dataset {
+  id      Int    @id @default(autoincrement())
+  name    String @unique(map: "dataset_name")
+  created Int
+  meta    Bytes
+  session Int
+  link    link[]
+}
+
+model example {
+  id         Int    @id @default(autoincrement())
+  input_hash Int
+  task_hash  Int
+  content    Bytes
+  link       link[]
+}
+
+model link {
+  id         Int     @id @default(autoincrement())
+  example_id Int
+  dataset_id Int
+  dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  example    example @relation(fields: [example_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([dataset_id], map: "link_dataset_id")
+  @@index([example_id], map: "link_example_id")
+}
