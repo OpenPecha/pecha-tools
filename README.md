@@ -14,9 +14,7 @@ This is a wrapper adds aditional functionality to prodigy.
 ## Owner(s)
 
 _Change to the owner(s) of the new repo. (This template's owners are:)_
-- [@ngawangtrinley](https://github.com/ngawangtrinley)
-- [@mikkokotila](https://github.com/mikkokotila)
-- [@evanyerburgh](https://github.com/evanyerburgh)
+- [@spsither](https://github.com/spsither)
 
 ## RFXs
 Requests for work (RFWs) and requests for comments (RFCs) associated with this project:
@@ -38,11 +36,7 @@ Requests for work (RFWs) and requests for comments (RFCs) associated with this p
 <hr>
 
 ## Project description
-_Use one of these:_
-
-With _Project Name_ you can _verb_ _noun_...
-
-_Project Name_ helps you _verb_ _noun_...
+With Pecha Tools Wrapper you can allow annotators to learn from their mistakes by looking at how the reviewers have corrected their work.
 
 
 ## Who this project is for
