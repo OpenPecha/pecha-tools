@@ -36,11 +36,7 @@ Requests for work (RFWs) and requests for comments (RFCs) associated with this p
 <hr>
 
 ## Project description
-_Use one of these:_
-
-With _Project Name_ you can _verb_ _noun_...
-
-_Project Name_ helps you _verb_ _noun_...
+With Pecha Tools Wrapper you can allow annotators to learn from their mistakes by looking at how the reviewers have corrected their work.
 
 
 ## Who this project is for
