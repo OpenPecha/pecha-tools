@@ -8,8 +8,8 @@
   <br>
 </h1>
 
-## _Project Name_
-_The project name should match its code's capability so that new users can easily understand what it does._
+## Pecha Tools Wrapper
+This is a wrapper adds aditional functionality to prodigy.
 
 ## Owner(s)
 
