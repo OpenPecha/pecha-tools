@@ -14,9 +14,7 @@ This is a wrapper adds aditional functionality to prodigy.
 ## Owner(s)
 
 _Change to the owner(s) of the new repo. (This template's owners are:)_
-- [@ngawangtrinley](https://github.com/ngawangtrinley)
-- [@mikkokotila](https://github.com/mikkokotila)
-- [@evanyerburgh](https://github.com/evanyerburgh)
+- [@spsither](https://github.com/spsither)
 
 ## RFXs
 Requests for work (RFWs) and requests for comments (RFCs) associated with this project:
