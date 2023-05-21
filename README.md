@@ -18,9 +18,7 @@ _Change to the owner(s) of the new repo. (This template's owners are:)_
 
 ## RFXs
 Requests for work (RFWs) and requests for comments (RFCs) associated with this project:
-* [RFX name](#)
-* [RFX name](#)
-* [RFX name](#)
+* [RFC0037](https://github.com/OpenPecha/Requests/issues/125)
 
 ## Table of contents
 <p align="center">
