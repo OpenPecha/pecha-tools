@@ -5,7 +5,7 @@ import UsernameDropdown from "./usernameDropdown";
 import WorkDropdown from "./workDropdown";
 import WelcomeMessage from "./welcomeMessage";
 import Histories from "./histories";
-
+import SearchFile from "./searchFile";
 export default function Home() {
   const [username, setUsername] = useState();
   const [workSpace, setWorkSpace] = useState();
@@ -57,6 +57,7 @@ export default function Home() {
         <WelcomeMessage username={username} workSpace={workSpace} />
         <UsernameDropdown setUsername={setUsername} usernames={usernames} />
         <WorkDropdown setWorkSpace={setWorkSpace} workSpaces={workSpaces} />
+        <SearchFile/>
         <Histories histories={histories} />
       </Sidebar>
     </>

@@ -11,7 +11,7 @@ export async function GET(request, {
 }) {
   let fileName = params.slug.replace('.mp3','').replace('.wav','');
   console.log(fileName);
-  const result = await prisma.$queryRaw`select JSON_EXTRACT(content, '$._session_id') as username, JSON_EXTRACT(content, '$.transcript') as transcript FROM example WHERE JSON_EXTRACT(content, '$.text') = ${fileName}`
+  const result = await prisma.$queryRaw`select JSON_EXTRACT(content, '$._session_id') as username, JSON_EXTRACT(content, '$.transcript') as transcript, DATETIME(JSON_EXTRACT(content, '$._timestamp'), 'unixepoch') as submitted_on FROM example WHERE JSON_EXTRACT(content, '$.text') = ${fileName}`
   console.log(result);
   return NextResponse.json({
     data: result

@@ -5,7 +5,7 @@ export default function UsernameDropdown({setUsername, usernames}) {
       <select
         name="username"
         id="username"
-        className="text-black"
+        className="w-5/12 text-black"
         onChange={(e) => setUsername(e.target.value)}
       >
         <option>--select--</option>

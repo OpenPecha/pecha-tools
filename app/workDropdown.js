@@ -5,7 +5,7 @@ export default function WorkDropdown({ setWorkSpace, workSpaces }) {
       <select
         name="work_space"
         id="work_space"
-        className="text-black"
+        className="w-5/12 text-black"
         onChange={(e) => setWorkSpace(e.target.value)}
       >
         <option>--select--</option>
