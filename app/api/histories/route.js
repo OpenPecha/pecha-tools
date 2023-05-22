@@ -1,7 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-
+import { getClient } from "@/util/database";
 function removeReview(txt) {
   return txt.replace("_review", "");
 }
@@ -19,10 +17,9 @@ export async function GET(NextRequest) {
 
   const workSpaceTranscribe = removeReview(workSpace);
   const workSpaceReview = addReview(workSpace);
-  console.log(removeReview(workSpace));
-  console.log(removeReview(workSpace));
   const limit = 200;
-  let data = await prisma.$queryRaw`select
+  const client = getClient(workSpaceTranscribe.slice(0, 6).toLowerCase());
+  let data = await client.$queryRaw`select
   review.audio as file_name,
   review.session_id as reviewer,
   annotation.session_id as transcriber,

@@ -1,19 +1,21 @@
-import {
-  NextResponse,
-  NextRequest
-} from "next/server";
-import {
-  PrismaClient
-} from "@prisma/client";
-const prisma = new PrismaClient();
-export async function GET(request, {
-  params
-}) {
-  let fileName = params.slug.replace('.mp3','').replace('.wav','');
-  console.log(fileName);
-  const result = await prisma.$queryRaw`select JSON_EXTRACT(content, '$._session_id') as username, JSON_EXTRACT(content, '$.transcript') as transcript, DATETIME(JSON_EXTRACT(content, '$._timestamp'), 'unixepoch') as submitted_on FROM example WHERE JSON_EXTRACT(content, '$.text') = ${fileName}`
+import { NextResponse, NextRequest } from "next/server";
+
+import { getClient } from "@/util/database";
+
+export async function GET(request, { params }) {
+  let fileName = params.slug.replace(".mp3", "").replace(".wav", "");
+  console.log(fileName.slice(0, 6).toLowerCase());
+  const client = getClient(fileName.slice(0, 6).toLowerCase());
+  if (client === null) {
+    return NextResponse.json({
+      data: [],
+      error: "No such workspace"
+    });
+  }
+  const result =
+    await client.$queryRaw`select JSON_EXTRACT(content, '$._session_id') as username, JSON_EXTRACT(content, '$.transcript') as transcript, DATETIME(JSON_EXTRACT(content, '$._timestamp'), 'unixepoch') as submitted_on FROM example WHERE JSON_EXTRACT(content, '$.text') = ${fileName}`;
   console.log(result);
   return NextResponse.json({
-    data: result
+    data: result,
   });
 }
