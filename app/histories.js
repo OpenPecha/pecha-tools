@@ -6,8 +6,8 @@ export default function Histories({ histories }) {
         <div className="flex flex-col space-y-2">
           <h1 className="text-2xl text-center">Histories</h1>
           <ul className="h-[82vh] overflow-y-auto">
-            {histories.map((history) => (
-              <li key={history.file_name} className="border-y">
+            {histories.map((history, id) => (
+              <li key={id} className="p-1 m-1 border">
                 <div className="flex flex-col">
                   <p className="text-xs">{history.file_name}</p>
                   <div>

@@ -16,7 +16,7 @@ export async function GET(NextRequest) {
   }
 
   const workSpaceTranscribe = removeReview(workSpace);
-  const workSpaceReview = addReview(workSpace);
+  const workSpaceReview = addReview(workSpaceTranscribe);
   const limit = 200;
   const client = getClient(workSpaceTranscribe.slice(0, 6).toLowerCase());
   let data = await client.$queryRaw`select

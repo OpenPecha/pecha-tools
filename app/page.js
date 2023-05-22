@@ -29,17 +29,15 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (username && workSpace) {
-      fetch(
-        `http://localhost:3000/api/histories?username=${username}&workSpace=${workSpace}`
-      )
+    if (workSpace) {
+      fetch(`http://localhost:3000/api/histories?workSpace=${workSpace}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           setHistories(data.data);
         });
     }
-  }, [username, workSpace]);
+  }, [workSpace]);
 
   return (
     <>
@@ -57,7 +55,7 @@ export default function Home() {
         <WelcomeMessage username={username} workSpace={workSpace} />
         <UsernameDropdown setUsername={setUsername} usernames={usernames} />
         <WorkDropdown setWorkSpace={setWorkSpace} workSpaces={workSpaces} />
-        <SearchFile/>
+        <SearchFile />
         <Histories histories={histories} />
       </Sidebar>
     </>
