@@ -15,6 +15,7 @@ export async function GET(NextRequest) {
     });
   }
 
+  console.log(workSpace);
   const workSpaceTranscribe = removeReview(workSpace);
   const workSpaceReview = addReview(workSpaceTranscribe);
   const limit = 200;
@@ -64,6 +65,7 @@ from
 order by
   annotation.timestamp desc
  limit ${limit};`;
+ console.log(data);
   return NextResponse.json({
     data: data,
   });
