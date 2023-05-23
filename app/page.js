@@ -33,7 +33,6 @@ export default function Home() {
       fetch(`https://pecha.tools/api/histories?workSpace=${workSpace}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setHistories(data.data);
         });
     }

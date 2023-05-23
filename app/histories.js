@@ -1,5 +1,4 @@
 export default function Histories({ histories }) {
-  console.log(histories);
   return (
     <>
       {histories.length > 0 ? (
