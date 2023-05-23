@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { getClient } from "@/util/database";
+import { getClient } from "@/utill/database";
 function removeReview(txt) {
   return txt.replace("_review", "");
 }

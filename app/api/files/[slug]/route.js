@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 
-import { getClient } from "@/util/database";
+import { getClient } from "@/utill/database";
 
 export async function GET(request, { params }) {
   let fileName = params.slug.replace(".mp3", "").replace(".wav", "");
