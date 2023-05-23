@@ -1,9 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 const client_stt_cs = new PrismaClient({
-  datasources: { db: { url: "file:/usr/local/prodigy/stt_cs_test.sqlite" } },
+  datasources: { db: { url: "file:/usr/local/prodigy/stt_cs.sqlite" } },
 });
 const client_stt_tt = new PrismaClient({
-  datasources: { db: { url: "file:/usr/local/prodigy/stt_tt_test.sqlite" } },
+  datasources: { db: { url: "file:/usr/local/prodigy/stt_tt.sqlite" } },
 });
 
 export function getClient(workSpace) {
