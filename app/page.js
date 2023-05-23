@@ -16,12 +16,12 @@ export default function Home() {
   const [histories, setHistories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/users")
+    fetch("https://pecha.tools/app/api/users")
       .then((res) => res.json())
       .then((data) => {
         setUsernames(data.data);
       });
-    fetch("http://localhost:3000/api/workspaces")
+    fetch("https://pecha.tools/app/api/workspaces")
       .then((res) => res.json())
       .then((data) => {
         setWorkSpaces(data.data);
@@ -30,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     if (workSpace) {
-      fetch(`http://localhost:3000/api/histories?workSpace=${workSpace}`)
+      fetch(`https://pecha.tools/app/api/histories?workSpace=${workSpace}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

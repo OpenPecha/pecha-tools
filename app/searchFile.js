@@ -14,7 +14,7 @@ export default function SearchFile() {
         <button
           className="border"
           onClick={() => {
-            fetch(`http://localhost:3000/api/files/${fileName}`)
+            fetch(`https://pecha.tools/app/api/files/${fileName}`)
               .then((res) => res.json())
               .then((data) => {
                 if (data.data.length == 0) {
