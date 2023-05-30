@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 const data = [
   "stt_cs",
   "stt_cs_review",
+  "stt_cs_gb",
+  "stt_cs_gb_review",
   "stt_tt_ga",
   "stt_tt_gb",
   "stt_tt_gc",
