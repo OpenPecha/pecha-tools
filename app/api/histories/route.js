@@ -19,7 +19,8 @@ export async function GET(NextRequest) {
   const workSpaceReview = addReview(workSpaceTranscribe);
   const limit = 200;
   const client = getClient(workSpaceTranscribe.slice(0, 6).toLowerCase());
-  let data = await client.$queryRaw`select
+  let data = await client.$queryRaw`
+  select
   review.audio as file_name,
   review.session_id as reviewer,
   annotation.session_id as transcriber,

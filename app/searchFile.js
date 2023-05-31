@@ -22,7 +22,7 @@ export default function SearchFile() {
                 } else {
                   const ans = data.data
                     .map((result) => {
-                      return `Transcriber: ${result.username}\nTranscript: ${result.transcript}\nSubmitted on: ${result.submitted_on}`;
+                      return `Transcriber: ${result.username}\nTranscript: ${result.transcript}\nSubmitted on: ${result.submitted_on}\nAnswer: ${result.answer}`;
                     })
                     .join("\n\n");
                   alert(ans);

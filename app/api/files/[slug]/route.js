@@ -12,7 +12,11 @@ export async function GET(request, { params }) {
     });
   }
   const result =
-    await client.$queryRaw`select JSON_EXTRACT(content, '$._session_id') as username, JSON_EXTRACT(content, '$.transcript') as transcript, DATETIME(JSON_EXTRACT(content, '$._timestamp'), 'unixepoch') as submitted_on FROM example WHERE JSON_EXTRACT(content, '$.text') = ${fileName}`;
+    await client.$queryRaw`
+    SELECT JSON_EXTRACT(content,
+      '$._session_id') AS username, JSON_EXTRACT(content, '$.transcript') AS transcript, DATETIME(JSON_EXTRACT(content, '$._timestamp'), 'unixepoch') AS submitted_on, JSON_EXTRACT(content, '$.answer') AS answer
+    FROM example
+    WHERE JSON_EXTRACT(content, '$.text') = ${fileName}`;
   return NextResponse.json({
     data: result,
   });
