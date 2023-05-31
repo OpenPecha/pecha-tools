@@ -58,7 +58,7 @@ const data = [
   "Lyarphel",
   "Ltsering",
   "Tnamgyal",
-  "Knyima",
+  "Knyimal",
   //stt_tt_gh
   "GonpoZ",
   "KunchokZ",
