@@ -79,7 +79,32 @@ const data = [
   //stt_tt_gg_review
   "karma",
   //stt_tt_gh_review
-  "DechenZ"
+  "DechenZ",
+  //stt_ns_ga
+  "TseringL",
+  "JampaL",
+  "TsewangL",
+  "PenpaL",
+  "SherabL",
+  "TashiL",
+  //stt_ns_gb
+  "NTashi",
+  "NPhuntsok",
+  "NTsewang",
+  "NDorjee",
+  "NWoesel",
+  "NJigmey",
+  //stt_ns_gc
+  "DJorden",
+  "DTsundue",
+  "DNagwang",
+  "DChungtak",
+  //stt_ns_ga_review
+  "NLhamo",
+  //stt_ns_gb_review
+  "TNyendak",
+  //stt_ns_gc_review
+  "TDesel"
 ];
 export async function GET() {
   return NextResponse.json({ data });
