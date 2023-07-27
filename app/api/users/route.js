@@ -88,7 +88,7 @@ const data = [
   "WoeserZ",
   "GangpuZ",
   "SonamZ",
-  //stt_tt_review
+  // stt_tt_review
   "nyima",
   "jamlob",
   "kaschoedon",
@@ -97,7 +97,7 @@ const data = [
   "Dharden",
   "karma",
   "DechenZ",
-  //stt_ab
+  // stt_ab
   "choephel",
   "dolma",
   "tsomo",
@@ -105,10 +105,10 @@ const data = [
   "sangye",
   "kelsang",
   "Tsondue",
-  //stt_ab_review
+  // stt_ab_review
   "Dharden",
   "Yeshi",
-  //stt_ns
+  // stt_ns
   "JampaL",
   "TsewangL",
   "PenpaL",
@@ -132,7 +132,7 @@ const data = [
   "TStanzin",
   "Tkardol",
   "TTsemcak",
-  //stt_ns_review
+  // stt_ns_review
   "TashiN",
   "TNyendak",
   "Deditsering",
