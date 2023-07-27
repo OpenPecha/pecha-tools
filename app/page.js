@@ -47,13 +47,14 @@ export default function Home() {
         />
       ) : (
         <div className="grid content-center w-screen h-screen justify-evenly">
-          <h1 className="text-2xl">welcome to pecha.tools</h1>
+          <h1 className="text-2xl">welcome to work.pecha.tools</h1>
+          Please select username and workspace to start working.
         </div>
       )}
       <Sidebar>
         <WelcomeMessage username={username} workSpace={workSpace} />
-        <UsernameDropdown setUsername={setUsername} usernames={usernames} />
         <WorkDropdown setWorkSpace={setWorkSpace} workSpaces={workSpaces} />
+        <UsernameDropdown setUsername={setUsername} usernames={usernames} />
         <SearchFile />
         <Histories histories={histories} />
       </Sidebar>

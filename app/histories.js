@@ -10,21 +10,12 @@ export default function Histories({ histories }) {
                 <div className="flex flex-col">
                   <p className="text-xs">{history.file_name}</p>
                   <div>
-                    {history.transcriber}{" "}
+                    {history.user}{" "}
                     <span className="text-xs">({history.submitted_on})</span>:{" "}
                   </div>
-                  <div
-                    className={`text-black ${
-                      history.correct == "True" ? "bg-green-300" : "bg-red-300"
-                    }`}
-                  >
-                    {history.original_transcript}
-                  </div>
                   <div>
-                    {history.reviewer}{" "}
-                    <span className="text-xs">({history.reviewed_on})</span>:{" "}
+                    {history.transcript}
                   </div>
-                  <div className="text-black bg-blue-300">{history.reviewed_transcript}</div>
                 </div>
               </li>
             ))}
