@@ -18,53 +18,54 @@ export async function GET(NextRequest) {
   const workSpaceTranscribe = removeReview(workSpace);
   const workSpaceReview = addReview(workSpaceTranscribe);
   const limit = 200;
-  const client = getClient(workSpaceTranscribe.slice(0, 6).toLowerCase());
+  const client = getClient();
+  // TODO: optimize this query
   let data = await client.$queryRaw`
-  select
+select
   review.audio as file_name,
   review.session_id as reviewer,
   annotation.session_id as transcriber,
   case
-      when review.transcript = annotation.transcript then "True"
-      else "False"
+    when review.transcript = annotation.transcript then "True"
+    else "False"
   end as correct,
   review.transcript as reviewed_transcript,
   annotation.transcript as original_transcript,
-  DATETIME(annotation.timestamp, 'unixepoch') as submitted_on,
-  DATETIME(review.timestamp, 'unixepoch') as reviewed_on,
+  annotation.timestamp as submitted_on,
+  review.timestamp as reviewed_on,
   annotation.answer as annotation_answer
 from
   (
-      select
-          json_extract (content, '$.text') as audio,
-          json_extract (content, '$._session_id') as session_id,
-          json_extract (content, '$.transcript') as transcript,
-          json_extract (content, '$._timestamp') as timestamp
-      from
-          example
-          join link on example.id = link.example_id
-          join dataset on dataset.id = link.dataset_id
-      where
-          dataset.name = ${workSpaceReview}
-          and json_extract (content, '$.answer') = 'accept'
+  select
+		example_json.content->'$.text' AS audio,		
+		example_json.content->'$._session_id' AS session_id, 
+    example_json.content->'$.transcript' AS transcript,  
+    FROM_UNIXTIME(example_json.content->'$._timestamp') AS timestamp
+	from
+		example_json
+		join link on example_json.id = link.example_id
+		join dataset on dataset.id = link.dataset_id
+	where
+		dataset.name = ${workSpaceReview}
+		and example_json.content->'$.answer' = 'accept'
   ) as review
   left join (
-      select
-          json_extract (content, '$.text') as audio,
-          json_extract (content, '$._session_id') as session_id,
-          json_extract (content, '$.transcript') as transcript,
-          json_extract (content, '$._timestamp') as timestamp,
-          json_extract (content, '$.answer') as answer
-      from
-          example
-          join link on example.id = link.example_id
-          join dataset on dataset.id = link.dataset_id
-      where
-          dataset.name = ${workSpaceTranscribe}
+  select
+    example_json.content->'$.text' AS audio,		
+    example_json.content->'$._session_id' AS session_id, 
+    example_json.content->'$.transcript' AS transcript,  
+    FROM_UNIXTIME(example_json.content->'$._timestamp') AS timestamp,
+    example_json.content->'$.answer' AS answer
+  from
+    example_json
+    join link on example_json.id = link.example_id
+    join dataset on dataset.id = link.dataset_id
+  where
+    dataset.name = ${workSpaceTranscribe}
   ) as annotation on annotation.audio = review.audio
 order by
   annotation.timestamp desc
- limit ${limit};`;
+  limit ${limit};`;
   return NextResponse.json({
     data: data,
   });

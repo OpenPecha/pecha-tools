@@ -3,34 +3,71 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model dataset {
-  id      Int    @id @default(autoincrement())
-  name    String @unique(map: "dataset_name")
-  created Int
-  meta    Bytes
-  session Int
-  examples  link[]
+  id              Int               @id @default(autoincrement())
+  name            String            @unique(map: "dataset_name") @db.VarChar(255)
+  created         BigInt
+  meta            Bytes             @db.Blob
+  session         Boolean
+  link            link[]
+  structured_link structured_link[]
 }
 
 model example {
   id         Int    @id @default(autoincrement())
-  input_hash Int
-  task_hash  Int
-  content    Bytes
-  datasets   link[]
+  input_hash BigInt
+  task_hash  BigInt
+  content    Bytes  @db.Blob
+  link       link[]
 }
 
 model link {
   id         Int     @id @default(autoincrement())
   example_id Int
   dataset_id Int
-  dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  example    example @relation(fields: [example_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  example    example @relation(fields: [example_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "link_ibfk_1")
+  dataset    dataset @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "link_ibfk_2")
 
   @@index([dataset_id], map: "link_dataset_id")
   @@index([example_id], map: "link_example_id")
+}
+
+model structured_example {
+  id               Int               @id @default(autoincrement())
+  task_hash        BigInt
+  answer           String            @db.VarChar(6)
+  content          Bytes             @db.Blob
+  input_id         Int
+  created          DateTime          @db.DateTime(0)
+  structured_input structured_input  @relation(fields: [input_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "structured_example_ibfk_1")
+  structured_link  structured_link[]
+
+  @@index([answer], map: "structuredexample_answer")
+  @@index([input_id], map: "structuredexample_input_id")
+  @@index([task_hash], map: "structuredexample_task_hash")
+}
+
+model structured_input {
+  id                 Int                  @id @default(autoincrement())
+  hash               BigInt               @unique(map: "structuredinput_hash")
+  content            Bytes                @db.Blob
+  created            DateTime             @db.DateTime(0)
+  structured_example structured_example[]
+}
+
+model structured_link {
+  id                 Int                @id @default(autoincrement())
+  example_id         Int
+  dataset_id         Int
+  session_id         String             @db.VarChar(255)
+  created            DateTime           @db.DateTime(0)
+  structured_example structured_example @relation(fields: [example_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "structured_link_ibfk_1")
+  dataset            dataset            @relation(fields: [dataset_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "structured_link_ibfk_2")
+
+  @@index([dataset_id], map: "structuredlink_dataset_id")
+  @@index([example_id], map: "structuredlink_example_id")
 }

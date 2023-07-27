@@ -4,7 +4,7 @@ import { getClient } from "@/utill/database";
 
 export async function GET(request, { params }) {
   let fileName = params.slug.replace(".mp3", "").replace(".wav", "");
-  const client = getClient(fileName.slice(0, 6).toLowerCase());
+  const client = getClient();
   if (client === null) {
     return NextResponse.json({
       data: [],
@@ -13,10 +13,14 @@ export async function GET(request, { params }) {
   }
   const result =
     await client.$queryRaw`
-    SELECT JSON_EXTRACT(content,
-      '$._session_id') AS username, JSON_EXTRACT(content, '$.transcript') AS transcript, DATETIME(JSON_EXTRACT(content, '$._timestamp'), 'unixepoch') AS submitted_on, JSON_EXTRACT(content, '$.answer') AS answer
-    FROM example
-    WHERE JSON_EXTRACT(content, '$.text') = ${fileName}`;
+    SELECT 
+      example_json.content->'$._session_id' AS username, 
+      example_json.content->'$.transcript' AS transcript,  
+      FROM_UNIXTIME(example_json.content->'$._timestamp') AS submitted_on,  
+      example_json.content->'$.answer' AS answer
+    FROM example_json
+    WHERE 
+      example_json.content->'$.text' = ${fileName}`;
   return NextResponse.json({
     data: result,
   });
