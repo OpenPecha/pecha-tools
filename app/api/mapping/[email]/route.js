@@ -3,10 +3,9 @@ import { NextResponse, NextRequest } from "next/server";
 import { mapping } from "@/data/mapping";
 
 export async function GET(request, { params }) {
-
-    if (mapping.hasOwnProperty(params.email)) {
+    if (mapping.has(params.email)) {
         return NextResponse.json(
-            mapping[params.email]
+            mapping.get(params.email)
         );
     }
     else {
