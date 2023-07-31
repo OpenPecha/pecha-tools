@@ -5,12 +5,12 @@ import { mapping } from "@/data/mapping";
 export async function GET(request, { params }) {
 
     if (mapping.hasOwnProperty(params.email)) {
-        return NextResponse.json({
-            url: mapping[params.email],
-        });
+        return NextResponse.json(
+            mapping[params.email]
+        );
     }
-    else{
-        return NextResponse.json({error:'No such email'}, {status: 404})
+    else {
+        return NextResponse.json({ error: 'No such email' }, { status: 404 })
     }
 
 }
