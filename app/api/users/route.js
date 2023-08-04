@@ -106,7 +106,7 @@ const data = [
   "kelsang",
   "Tsondue",
   // stt_ab_review
-  "Dharden",
+  "dharden",
   "Yeshi",
   // stt_ns
   "JampaL",
