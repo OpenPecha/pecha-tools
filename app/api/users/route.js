@@ -94,7 +94,7 @@ const data = [
   "kaschoedon",
   "ngodup",
   "celon",
-  "Dharden",
+  "dharden",
   "karma",
   "DechenZ",
   // stt_ab
