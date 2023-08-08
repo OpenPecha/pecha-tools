@@ -19,9 +19,10 @@ const mappingObj =
     "jamperthupten@gmail.com" : { url: "work.pecha.tools/glyph_ann_review_gb/?session=jamperthupten@gmail.com", department: "ocr"},
 
 
+    "dhephala@gmail.com" : { url: "work.pecha.tools/ls_perig_review/?session=dhephala@gmail.com", department: "ocr"},
+
     
     "dhondup995@gmail.com" : { url: "work.pecha.tools/line_to_text_ga/?session=dhondup995@gmail.com", department: "ocr"},
-    "dhephala@gmail.com" : { url: "work.pecha.tools/line_to_text_ga/?session=dhephala@gmail.com", department: "ocr"},
     "tthegchok1985@gmail.com" : { url: "work.pecha.tools/line_to_text_ga/?session=tthegchok1985@gmail.com", department: "ocr"},
     
     "tenzintherchen154@gmail.com" : { url: "work.pecha.tools/line_to_text_gb/?session=tenzintherchen154@gmail.com", department: "ocr"},
