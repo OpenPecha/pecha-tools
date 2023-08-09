@@ -26,7 +26,7 @@ const mappingObj =
     "tthegchok1985@gmail.com" : { url: "work.pecha.tools/line_to_text_ga/?session=tthegchok1985@gmail.com", department: "ocr"},
     
     "tenzintherchen154@gmail.com" : { url: "work.pecha.tools/line_to_text_gb/?session=tenzintherchen154@gmail.com", department: "ocr"},
-    "kunchokd@787gmail.com" : { url: "work.pecha.tools/line_to_text_gb/?session=kunchokd@787gmail.com", department: "ocr"},
+    "kunchokd787@gmail.com" : { url: "work.pecha.tools/line_to_text_gb/?session=kunchokd787@gmail.com", department: "ocr"},
     "shugtso@monlam.ai" : { url: "work.pecha.tools/line_to_text_gb/?session=shugtso@monlam.ai", department: "ocr" },
 }
 
